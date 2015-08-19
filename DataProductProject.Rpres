@@ -1,0 +1,82 @@
+Diamonds data analysis
+========================================================
+
+author: David Cano
+date: `r date()`
+
+
+Created for the Coursera Project within the Data Scientist Specialization
+
+Introduction
+========================================================
+
+This presentation will help you understand the motivation behind the data analysis project on diamonds analysis (that can be access from **https://davidcanoriesgo.shinyapps.io/DataProducts**).
+
+- Data used is "Diamonds", included within the ggplot2 package
+- shinyapps.io web product was created for the purpose of the analysis
+- A description of the product is included within the product itself (linked above)
+
+What data is being used?
+========================================================
+
+First of all, let's summarize data included: `diamonds`
+
+```{r,eval=FALSE}
+library(ggplot2)
+data(diamonds)
+str(diamonds)
+```
+<small><small><small>
+```{r, echo=FALSE, out.width = '200px', out.height = '200px'}
+library(ggplot2)
+data(diamonds)
+str(diamonds)
+```
+</small></small></small>
+
+Data Content
+========================================================
+
+
+<small><small>
+- [, 1]  carat: weight of diamond stones in carat unit
+- [, 2]	 cut: diamond's quality
+- [, 3]	 color: a factor with levels (D,E,F,G,H,I)
+- [, 4]	 clarity: a factor with levels (IF,VVS1,VVS2,VS1,VS2)
+- [, 5]	 depth: percentage ratio diameter / depth (dimension)
+
+</small></small>
+
+***
+
+<small><small>
+- [, 6]	 table: percentage ratio total width / width table
+- [, 7]	 price: in USD
+- [, 8]	 x: dimension 1
+- [, 9]	 y: dimension 2
+- [,10]	 z: dimension 3
+
+</small></small>
+
+What to expect ... when you select a carat
+========================================================
+
+
+```{r, echo=FALSE}
+
+## sample carat = 2.2
+    # First plot
+      plot(diamonds$price, diamonds$carat, main="Carat x Price",pch=19,col="lightgoldenrod1")
+      carat <- 2.2
+      abline(h=carat,col="red",lwd=5)   
+      abline(lm(diamonds$carat ~ diamonds$price),col="black",lwd=5)
+```
+ 
+ ***     
+      
+```{r, echo=FALSE}      
+    # Second plot
+      hist(diamonds$carat, breaks=100,main = '# Diamonds x carat',xlab='Diamonds carat', ylab='# of Diamonds',col='darkolivegreen1')
+      lines(c(carat,carat),c(0,10000),col="blue",lwd=5)
+```
+
